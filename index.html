@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustStreamIt</title>
+    <!-- Balise link pour la police Nova Square -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/api.js"></script>
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+
+    <header>
+        <div id="brand">JustStreamIt</div>
+        <nav>
+            <a href="index.html" class="active">Accueil</a>
+            <a href="categories.html">Catégories</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="titles-container">
+            <h2 class="section-header">Meilleur film</h2>
+        </div>
+    
+        <section id="best-movie" class="gold-background">
+            <img src="" alt="Image du meilleur film" id="best-movie-img">
+            <div id="best-movie-content">
+                <h2 id="best-movie-title">Titre du meilleur film</h2>
+                <p id="best-movie-summary">Résumé du meilleur film...</p>
+                <button id="best-movie-btn">Play</button>
+            </div>
+        </section>
+
+        <section id="top-rated-movies" class="movie-carousel">
+            <h2 class="section-header">Films les mieux notés</h2>
+            <button class="carousel-btn prev-btn">&#10094;</button> <!-- Bouton précédent -->
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <!-- Les éléments des films seront injectés ici par JavaScript -->
+                </ul>
+            </div>
+            <button class="carousel-btn next-btn">&#10095;</button> <!-- Bouton suivant -->
+        </section>        
+
+        <section id="category1" class="movie-category">
+            <h2 class="section-header">Action</h2>
+            <div class="carousel">
+                <!-- Movie items will be populated here -->
+            </div>
+        </section>
+
+        <section id="category2" class="movie-category">
+            <h2>Comedy</h2>
+            <div class="carousel">
+                <!-- Movie items will be populated here -->
+            </div>
+        </section>
+
+        <section id="category3" class="movie-category">
+            <h2>Drama</h2>
+            <div class="carousel">
+                <!-- Movie items will be populated here -->
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <!-- Modal content will be populated here -->
+    </div>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+</body>
+</html>

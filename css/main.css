@@ -1,0 +1,200 @@
+@charset "UTF-8";
+body {
+  background: url("../img/background_JustStreamIt.png") center/cover no-repeat;
+  color: #fff;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble du conteneur */
+  background-position: center; /* Centre l'image horizontalement et verticalement */
+}
+
+header {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+#brand {
+  color: #b22101;
+  font-size: 3.5em;
+  text-align: left;
+  margin-right: 50px;
+  font-family: "Nova Square", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #ccc;
+}
+
+nav a.active {
+  border-bottom: 2px solid #fff;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-button, #best-movie #best-movie-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b22101;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.play-button:hover, #best-movie #best-movie-btn:hover {
+  background-color: #7f1801;
+}
+
+.carousel-button, .movie-carousel .prev-btn, .movie-carousel .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.titles-container {
+  display: block; /* Rend le container en bloc, le rendant approprié pour des mises en page de niveau supérieur */
+  width: 1040px; /* Calcule la largeur totale du container basé sur le nombre de films et les marges */
+  margin: 0 auto; /* Centre le container horizontalement */
+}
+
+.section-header {
+  color: #b22101; /* Utilise une variable pour définir la couleur du texte */
+  font-size: 1.5em; /* Définit la taille de la police */
+  margin-left: 0; /* Réinitialise la marge gauche */
+  padding-left: 10px; /* Ajoute un peu d'espace à gauche du texte */
+  text-align: left; /* Alignement du texte à gauche */
+}
+
+#best-movie {
+  margin-top: 10px; /* Marge en haut */
+  max-width: 1210px; /* Calcule la largeur maximale du container */
+  margin-left: 10px/2; /* Définit une marge gauche spécifique */
+  padding: 20px; /* Ajoute du padding autour du contenu */
+  border: none; /* Aucune bordure */
+  display: flex; /* Utilise Flexbox pour la disposition */
+  flex-direction: row; /* Les éléments enfants sont disposés en ligne */
+  align-items: center; /* Centre verticalement les éléments enfants */
+  justify-content: flex-start; /* Alignement horizontal des enfants au début */
+  /* Styles pour le fond doré */
+}
+#best-movie.gold-background {
+  position: relative; /* Position relative pour permettre un positionnement absolu des pseudos-éléments */
+}
+#best-movie.gold-background::before {
+  content: ""; /* Nécessaire pour générer le pseudo-élément */
+  position: absolute; /* Position absolue par rapport à son parent */
+  top: 0;
+  left: 0;
+  width: 100%; /* Largeur complète */
+  height: 100%; /* Hauteur complète */
+  background: url("../img/—Pngtree—creative metal gold background_926653.jpg") center/cover; /* Image de fond et style de remplissage */
+  z-index: -1; /* Place derrière le contenu */
+  opacity: 0.37; /* Transparence pour l'effet de superposition */
+  clip-path: ellipse(120% 50% at 50% 50%); /* Forme elliptique pour le fond */
+  border-radius: 5%; /* Rayon de la bordure pour arrondir les coins */
+}
+#best-movie img {
+  width: 200px; /* Largeur fixe pour les images */
+  height: auto; /* Hauteur ajustée automatiquement pour maintenir le ratio */
+}
+#best-movie #best-movie-content {
+  display: flex; /* Utilise Flexbox pour la disposition */
+  flex-direction: column; /* Les éléments enfants sont disposés en colonne */
+  align-items: flex-start; /* Alignement horizontal des enfants au début */
+  justify-content: center; /* Centre verticalement les éléments enfants */
+  margin-left: 20px; /* Marge à gauche */
+  margin-right: 90px; /* Marge à droite */
+}
+#best-movie #best-movie-title {
+  margin-bottom: 10px; /* Marge en bas */
+  font-size: 1.5em; /* Taille de la police */
+  font-weight: bold; /* Police en gras */
+}
+#best-movie #best-movie-summary {
+  font-size: 1em; /* Taille de la police */
+  margin-bottom: 10px; /* Marge en bas */
+}
+#best-movie #best-movie-btn {
+  /* Étend les styles du bouton de lecture */
+  align-self: flex-start; /* Alignement spécifique de cet élément */
+  margin-top: 10px; /* Marge en haut */
+}
+
+.movie-carousel {
+  position: relative; /* Position relative pour permettre le positionnement absolu des boutons */
+  max-width: 100%; /* Largeur maximale */
+  margin: 20px auto; /* Marge en haut et en bas, centré horizontalement */
+}
+.movie-carousel .carousel-track-container {
+  overflow: hidden; /* Cache le contenu débordant */
+  width: 1040px; /* Calcule la largeur du container */
+}
+.movie-carousel .carousel-track {
+  display: flex; /* Utilise Flexbox pour la disposition */
+  transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
+}
+.movie-carousel .prev-btn, .movie-carousel .next-btn {
+  /* Étend les styles du bouton de carrousel */
+  /* Position spécifique pour le bouton précédent */
+  /* Position spécifique pour le bouton suivant */
+}
+.movie-carousel .prev-btn.prev-btn, .movie-carousel .next-btn.prev-btn {
+  left: 10px;
+}
+.movie-carousel .prev-btn.next-btn, .movie-carousel .next-btn.next-btn {
+  right: 10px;
+}
+
+.carousel-slide {
+  margin-right: 15px;
+}
+
+.play-button, #best-movie #best-movie-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b22101;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.play-button:hover, #best-movie #best-movie-btn:hover {
+  background-color: #7f1801;
+}
+
+.carousel-button, .movie-carousel .prev-btn, .movie-carousel .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/*# sourceMappingURL=main.css.map */

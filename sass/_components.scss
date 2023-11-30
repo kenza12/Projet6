@@ -1,0 +1,31 @@
+
+@import 'variables';
+
+.play-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: $red-color;
+  color: $background-color;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($red-color, 10%);
+  }
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  // Vous pouvez également ajouter des styles spécifiques pour le hover ici
+  &:hover {
+    // Votre style pour hover
+  }
+}

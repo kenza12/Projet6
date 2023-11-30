@@ -1,0 +1,64 @@
+// Importation des variables SASS définies dans le fichier `_variables.scss`
+@import 'variables';
+
+// Styles appliqués à la balise <body> du document
+body {
+  background: url('../img/background_JustStreamIt.png') center/cover no-repeat;
+  color: $text-color; // Définit la couleur du texte avec la variable $text-color
+  margin: 0; // Réinitialise la marge autour du <body> pour éliminer tout espace par défaut
+  font-family: 'Arial', sans-serif; // Définit la famille de polices utilisée pour le texte
+  background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble du conteneur */
+  background-position: center; /* Centre l'image horizontalement et verticalement */
+}
+
+// Styles appliqués à l'élément <header>
+header {
+  background-color: transparent;
+  display: flex; // Utilise flexbox pour un agencement flexible des éléments enfants
+  justify-content: center; // Centre les éléments enfants horizontalement
+  align-items: center; // Centre les éléments enfants verticalement
+  padding: 10px 0; // Ajoute un rembourrage en haut et en bas de l'entête
+  margin-bottom: 20px;
+}
+
+// Styles appliqués à l'élément avec l'identifiant #brand
+#brand {
+  color: $red-color; // Définit la couleur du titre du site avec la variable $red-color
+  font-size: 3.5em; // Ajuste la taille de la police pour le titre du site
+  text-align: left; // Aligner le texte à gauche
+  margin-right: 50px;
+  font-family: 'Nova Square', sans-serif; // Utilisation de la police Roboto ou une police similaire
+  font-weight: 700; // Choisir une épaisseur de police plus importante (700 pour bold, vous pouvez ajuster)
+  letter-spacing: 0.5px; // Ajouter un espacement entre les caractères pour un style plus large
+}
+
+// Styles appliqués à l'élément <nav>
+nav {
+  display: flex; // Utilise flexbox pour aligner les éléments de navigation
+  gap: 20px; // Crée un espace entre les éléments de navigation
+}
+
+// Styles appliqués à chaque lien <a> dans la navigation
+nav a {
+  color: $text-color; // Applique la couleur du texte définie dans les variables
+  text-decoration: none; // Supprime le soulignement par défaut des liens
+  padding: 5px 10px; // Ajoute un rembourrage autour des liens pour augmenter la zone cliquable
+  transition: color 0.3s ease; // Crée une transition en douceur pour le changement de couleur au survol
+  
+  // Pseudo-classe :hover qui déclenche le style lorsqu'un utilisateur survole un lien
+  &:hover {
+    color: #ccc; // Change la couleur du lien au survol
+  }
+}
+
+// Styles spécifiques pour les liens actifs (par exemple, la page actuellement consultée)
+nav a.active {
+  border-bottom: 2px solid $text-color; // Ajoute une bordure en bas du lien pour l'indiquer comme actif
+}
+
+// Styles appliqués à l'élément <main> qui contient le contenu principal de la page
+main {
+  display: flex; // Utilise flexbox pour l'agencement
+  flex-direction: column; // Les éléments enfants sont disposés en colonne (du haut vers le bas)
+  align-items: center; // Centre les éléments enfants verticalement dans la colonne
+}
