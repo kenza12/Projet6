@@ -131,3 +131,8 @@ async function fetchTopRatedActionMovies() {
   const url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=Action';
   fetchMovies(url, '.carousel-action-track');
 }
+
+async function fetchTopRatedComedyMovies() {
+  const url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=Comedy';
+  fetchMovies(url, '.carousel-comedy-track');
+}

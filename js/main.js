@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   fetchBestMovie();
   fetchTopRatedMovies();
   fetchTopRatedActionMovies();
+  fetchTopRatedComedyMovies();
 });
 
 function setupCarouselButtons(carouselId, prevButtonClass, nextButtonClass) {
@@ -39,5 +40,7 @@ function initializeCarousel(carouselId) {
     setupCarouselButtons(carouselId, '.top-rated-prev', '.top-rated-next'); // Setup buttons after carousel is loaded for all top rated movies
   } else if (carouselId === '.carousel-action-track') {
     setupCarouselButtons(carouselId, '.action-prev', '.action-next'); // Setup buttons after carousel is loaded for action top rated movies
+  } else if (carouselId === '.carousel-comedy-track') {
+    setupCarouselButtons(carouselId, '.comedy-prev', '.comedy-next'); // Setup buttons after carousel is loaded for action top rated movies
   }
 }

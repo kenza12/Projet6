@@ -160,7 +160,7 @@ main {
   overflow: hidden; /* Cache le contenu débordant */
   width: 1040px; /* Calcule la largeur du container */
 }
-.movie-carousel .carousel-track, .movie-carousel .carousel-action-track {
+.movie-carousel .carousel-track, .movie-carousel .carousel-action-track, .movie-carousel .carousel-comedy-track {
   display: flex; /* Utilise Flexbox pour la disposition */
   transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
 }
