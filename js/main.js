@@ -4,21 +4,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
   fetchTopRatedActionMovies();
 });
 
-function setupCarouselButtons() {
-  const nextButton = document.querySelector('.next-btn');
-  const prevButton = document.querySelector('.prev-btn');
+function setupCarouselButtons(carouselId, prevButtonClass, nextButtonClass) {
+  const nextButton = document.querySelector(nextButtonClass);
+  const prevButton = document.querySelector(prevButtonClass);
 
   nextButton.addEventListener('click', () => {
-    moveCarousel('next');
+    moveCarousel('next', carouselId);
   });
 
   prevButton.addEventListener('click', () => {
-    moveCarousel('prev');
+    moveCarousel('prev', carouselId);
   });
 }
 
-function moveCarousel(direction) {
-  const carouselTrack = document.querySelector('.carousel-track');
+function moveCarousel(direction, carouselId) {
+  const carouselTrack = document.querySelector(carouselId);
   const slideWidth = carouselTrack.querySelector('.carousel-slide').offsetWidth;
   const maxSlideIndex = carouselTrack.childElementCount - 4; // 4 is the number of slides to show
   let currentSlideIndex = parseInt(carouselTrack.getAttribute('data-slide-index')) || 0;
@@ -33,7 +33,11 @@ function moveCarousel(direction) {
   carouselTrack.style.transform = `translateX(-${currentSlideIndex * slideWidth}px)`;
 }
 
-// Call this function at the end of fetchTopRatedMovies
-function initializeCarousel() {
-  setupCarouselButtons(); // Setup buttons after carousel is loaded
+// Call this function at the end of fetchMovies
+function initializeCarousel(carouselId) {
+  if (carouselId === '.carousel-track') {
+    setupCarouselButtons(carouselId, '.top-rated-prev', '.top-rated-next'); // Setup buttons after carousel is loaded for all top rated movies
+  } else if (carouselId === '.carousel-action-track') {
+    setupCarouselButtons(carouselId, '.action-prev', '.action-next'); // Setup buttons after carousel is loaded for action top rated movies
+  }
 }

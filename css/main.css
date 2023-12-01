@@ -4,10 +4,17 @@ body {
   color: #fff;
   margin: 0;
   font-family: "Arial", sans-serif;
-  background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble du conteneur */
-  background-position: center; /* Centre l'image horizontalement et verticalement */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+@media (max-width: 768px) {
+  body {
+    background-size: contain;
+  }
+}
 header {
   background-color: transparent;
   display: flex;
@@ -153,7 +160,7 @@ main {
   overflow: hidden; /* Cache le contenu débordant */
   width: 1040px; /* Calcule la largeur du container */
 }
-.movie-carousel .carousel-track {
+.movie-carousel .carousel-track, .movie-carousel .carousel-action-track {
   display: flex; /* Utilise Flexbox pour la disposition */
   transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
 }

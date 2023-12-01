@@ -88,7 +88,7 @@
     width: calc($visible-movies * $movie-width + 4 * $movie-margin); /* Calcule la largeur du container */
   }
 
-  .carousel-track {
+  .carousel-track, .carousel-action-track {
     display: flex; /* Utilise Flexbox pour la disposition */
     transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
   }

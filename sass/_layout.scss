@@ -7,8 +7,17 @@ body {
   color: $text-color; // Définit la couleur du texte avec la variable $text-color
   margin: 0; // Réinitialise la marge autour du <body> pour éliminer tout espace par défaut
   font-family: 'Arial', sans-serif; // Définit la famille de polices utilisée pour le texte
-  background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble du conteneur */
-  background-position: center; /* Centre l'image horizontalement et verticalement */
+  background-size: cover; // Ajuste la taille de l'image pour couvrir l'ensemble du conteneur
+  background-position: center top; // L'image de fond sera centrée horizontalement, mais son point de départ vertical sera en haut
+  background-repeat: no-repeat; // Empêche la répétition de l'image de fond
+  background-attachment: fixed;
+}
+
+// Média queries pour ajuster le fond en fonction de la taille de l'écran
+@media (max-width: 768px) {
+  body {
+    background-size: contain; // Assure que l'image entière est visible sur les écrans plus petits
+  }
 }
 
 // Styles appliqués à l'élément <header>
