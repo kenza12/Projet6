@@ -18,20 +18,17 @@ body {
 header {
   background-color: transparent;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 10px 0;
-  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
 }
 
-#brand {
-  color: #b22101;
-  font-size: 3.5em;
-  text-align: left;
-  margin-right: 50px;
-  font-family: "Nova Square", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+#brand-logo {
+  height: 250px;
+  width: auto;
+  margin-left: 210px;
+  margin-right: 560px;
 }
 
 nav {
@@ -103,6 +100,7 @@ main {
 }
 
 .section-header {
+  margin-top: 0;
   color: #b22101; /* Utilise une variable pour définir la couleur du texte */
   font-size: 1.5em; /* Définit la taille de la police */
   margin-left: 0; /* Réinitialise la marge gauche */
@@ -112,6 +110,7 @@ main {
 
 #best-movie {
   margin-top: 10px; /* Marge en haut */
+  margin-bottom: 40px;
   max-width: 1210px; /* Calcule la largeur maximale du container */
   margin-left: 10px/2; /* Définit une marge gauche spécifique */
   padding: 20px; /* Ajoute du padding autour du contenu */

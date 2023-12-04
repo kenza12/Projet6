@@ -23,22 +23,20 @@ body {
 // Styles appliqués à l'élément <header>
 header {
   background-color: transparent;
-  display: flex; // Utilise flexbox pour un agencement flexible des éléments enfants
-  justify-content: center; // Centre les éléments enfants horizontalement
-  align-items: center; // Centre les éléments enfants verticalement
-  padding: 10px 0; // Ajoute un rembourrage en haut et en bas de l'entête
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start; // Alignement des éléments enfants vers le début (gauche)
+  align-items: center;
+  padding: 10px; // Ajustez selon les besoins
+  width: 100%; // Assure que le header s'étend sur toute la largeur de la page
 }
 
-// Styles appliqués à l'élément avec l'identifiant #brand
-#brand {
-  color: $red-color; // Définit la couleur du titre du site avec la variable $red-color
-  font-size: 3.5em; // Ajuste la taille de la police pour le titre du site
-  text-align: left; // Aligner le texte à gauche
-  margin-right: 50px;
-  font-family: 'Nova Square', sans-serif; // Utilisation de la police Roboto ou une police similaire
-  font-weight: 700; // Choisir une épaisseur de police plus importante (700 pour bold, vous pouvez ajuster)
-  letter-spacing: 0.5px; // Ajouter un espacement entre les caractères pour un style plus large
+// Styles appliqués à l'image du logo
+
+#brand-logo {
+  height: 250px; // Hauteur du logo
+  width: auto; // Largeur ajustée automatiquement
+  margin-left: 210px; // Ajustez cette marge pour positionner le logo plus ou moins à gauche
+  margin-right: 560px; // Espace entre le logo et le reste du contenu du header
 }
 
 // Styles appliqués à l'élément <nav>
