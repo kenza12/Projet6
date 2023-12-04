@@ -38,7 +38,9 @@
       left: 0;
       width: 100%; /* Largeur complète */
       height: 100%; /* Hauteur complète */
-      background: url('../img/—Pngtree—creative metal gold background_926653.jpg') center/cover; /* Image de fond et style de remplissage */
+      background: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), // Overlay d'ombre noire
+      url('../img/—Pngtree—creative metal gold background_926653.jpg') center/cover; // Image de fond et style de remplissage
       z-index: -1; /* Place derrière le contenu */
       opacity: 0.37; /* Transparence pour l'effet de superposition */
       clip-path: ellipse(120% 50% at 50% 50%); /* Forme elliptique pour le fond */
@@ -88,7 +90,7 @@
     width: calc($visible-movies * $movie-width + 4 * $movie-margin); /* Calcule la largeur du container */
   }
 
-  .carousel-track, .carousel-action-track, .carousel-comedy-track {
+  .carousel-track, .carousel-action-track, .carousel-comedy-track, .carousel-drama-track {
     display: flex; /* Utilise Flexbox pour la disposition */
     transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
   }
@@ -103,4 +105,69 @@
 .carousel-slide {
   margin-right: 15px; // Ajoute une marge à droite pour chaque élément du carrousel
 }
+
+// Styles pour la modale
+.modal {
+  display: none; // Cache la modale par défaut
+  position: fixed; // Positionnement fixe pour rester au-dessus des autres éléments
+  z-index: 1000; // Assure que la modale est au-dessus des autres contenus (détermine l'ordre de superposition).
+  left: 0;
+  top: 0;
+  width: 100%; // Largeur complète
+  height: 100%; // Hauteur complète
+  overflow: auto; // Permet le défilement si le contenu est trop long
+  background-color: rgba(0, 0, 0, 0.6); // Fond semi-transparent
+
+  .modal-content {
+    background-color: $background-color;
+    margin: 10% auto; // Centré horizontalement avec une marge en haut
+    padding: 20px;
+    border: 1px solid $red-color;
+    width: 80%; // Largeur adaptée à la taille de l'écran
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+    img.modal-movie-img {
+      max-width: 100%; // Assure que l'image ne dépasse pas la largeur de la modale
+      height: auto;
+    }
+
+    h3.modal-movie-title {
+      color: $red-color;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .modal-movie-description {
+      margin-top: 25px;
+    }
+    
+    .modal-info {
+      margin: 5px 0;
+
+      .modal-section-title {
+        color: $red-color;
+        margin-right: 10px;
+      }
+
+      .modal-value {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+
+
+// Responsivité pour les écrans plus petits
+// @media screen and (max-width: 600px) {
+//   .modal-content {
+//     width: 95%;
+//   }
+// }
+
+
+
+
+
+
 

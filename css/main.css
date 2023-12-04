@@ -82,6 +82,20 @@ main {
   cursor: pointer;
   z-index: 10;
 }
+
+.close-modal {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-modal:hover, .close-modal:focus {
+  color: #b22101;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .titles-container {
   display: block; /* Rend le container en bloc, le rendant approprié pour des mises en page de niveau supérieur */
   width: 1040px; /* Calcule la largeur totale du container basé sur le nombre de films et les marges */
@@ -118,7 +132,7 @@ main {
   left: 0;
   width: 100%; /* Largeur complète */
   height: 100%; /* Hauteur complète */
-  background: url("../img/—Pngtree—creative metal gold background_926653.jpg") center/cover; /* Image de fond et style de remplissage */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), url("../img/—Pngtree—creative metal gold background_926653.jpg") center/cover;
   z-index: -1; /* Place derrière le contenu */
   opacity: 0.37; /* Transparence pour l'effet de superposition */
   clip-path: ellipse(120% 50% at 50% 50%); /* Forme elliptique pour le fond */
@@ -160,7 +174,7 @@ main {
   overflow: hidden; /* Cache le contenu débordant */
   width: 1040px; /* Calcule la largeur du container */
 }
-.movie-carousel .carousel-track, .movie-carousel .carousel-action-track, .movie-carousel .carousel-comedy-track {
+.movie-carousel .carousel-track, .movie-carousel .carousel-action-track, .movie-carousel .carousel-comedy-track, .movie-carousel .carousel-drama-track {
   display: flex; /* Utilise Flexbox pour la disposition */
   transition: transform 0.5s ease-in-out; /* Transition fluide pour les animations */
 }
@@ -178,6 +192,48 @@ main {
 
 .carousel-slide {
   margin-right: 15px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal .modal-content {
+  background-color: #000;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #b22101;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.modal .modal-content img.modal-movie-img {
+  max-width: 100%;
+  height: auto;
+}
+.modal .modal-content h3.modal-movie-title {
+  color: #b22101;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+.modal .modal-content .modal-movie-description {
+  margin-top: 25px;
+}
+.modal .modal-content .modal-info {
+  margin: 5px 0;
+}
+.modal .modal-content .modal-info .modal-section-title {
+  color: #b22101;
+  margin-right: 10px;
+}
+.modal .modal-content .modal-info .modal-value {
+  color: #fff;
 }
 
 .play-button, #best-movie #best-movie-btn {
@@ -202,6 +258,19 @@ main {
   border: none;
   cursor: pointer;
   z-index: 10;
+}
+
+.close-modal {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-modal:hover, .close-modal:focus {
+  color: #b22101;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

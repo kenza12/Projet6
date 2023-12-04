@@ -67,18 +67,36 @@
             <button class="carousel-btn next-btn comedy-next">&#10095;</button> <!-- Bouton suivant -->
         </section>
 
-        <section id="category3" class="movie-category">
-            <h2>Drama</h2>
-            <div class="carousel">
-                <!-- Movie items will be populated here -->
+        <section id="category3" class="movie-carousel">
+            <h2 class="section-header">Drama</h2>
+            <button class="carousel-btn prev-btn drama-prev">&#10094;</button> <!-- Bouton précédent -->
+            <div class="carousel-track-container">
+                <ul class="carousel-drama-track">
+                    <!-- Les éléments des films seront injectés ici par JavaScript -->
+                </ul>
             </div>
+            <button class="carousel-btn next-btn drama-next">&#10095;</button> <!-- Bouton suivant -->
         </section>
     </main>
 
-    <div id="modal" class="modal">
-        <!-- Modal content will be populated here -->
-    </div>
-
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <img class="modal-movie-img" src="" alt="Pochette du film">
+          <h3 class="modal-movie-title"></h3>
+          <p class="modal-info"><span class="modal-section-title">Genres:</span> <span class="modal-value modal-movie-genre"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Date de sortie:</span> <span class="modal-value modal-movie-date"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Classification:</span> <span class="modal-value modal-movie-rated"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Score IMDb:</span> <span class="modal-value modal-movie-imdb"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Réalisateur:</span> <span class="modal-value modal-movie-director"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Acteurs:</span> <span class="modal-value modal-movie-actors"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Durée:</span> <span class="modal-value modal-movie-duration"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Pays d'origine:</span> <span class="modal-value modal-movie-country"></span></p>
+          <p class="modal-info"><span class="modal-section-title">Box Office:</span> <span class="modal-value modal-movie-boxoffice"></span></p>
+          <p class="modal-movie-description"></p>
+        </div>
+      </div>      
+    
     <footer>
         <!-- Footer content goes here -->
     </footer>

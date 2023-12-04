@@ -1,3 +1,5 @@
+let bestMovie;
+
 async function fetchBestMovie() {
   /**
  * Récupère les informations du meilleur film en se basant sur le score IMDb.
@@ -59,9 +61,7 @@ imgElement.alt = `Image de ${movie.title}`;
 titleElement.textContent = movie.title;
 summaryElement.textContent = movie.description ? movie.description : 'Résumé non disponible';
 
-buttonElement.onclick = function() {
-  // Gestionnaire d'événement pour le clic sur le bouton (exemple de redirection ou ouverture d'un modal)
-};
+buttonElement.setAttribute('data-movie-id', movie.id); // Stocke l'ID du film dans l'attribut du bouton
 
 // Affiche les éléments avec les informations du film
 imgElement.style.display = 'block';
@@ -73,7 +73,7 @@ buttonElement.style.display = 'block';
 
 
 
-
+// top rated movies (toutees catégories confondues ou spécifiques)
 
 async function fetchTopRatedMovies() {
 /**
@@ -116,14 +116,14 @@ function displayMovies(movies, carouselId) {
     const movieElement = document.createElement('li'); // Crée un élément pour chaque film
     movieElement.classList.add('carousel-slide'); // Ajoute la classe pour le style
 
-  // injection du contenu HTML
-  movieElement.innerHTML = `
-  <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
-  <h4>${movie.title}</h4>
-  `;
+    // injection du contenu HTML
+    movieElement.innerHTML = `
+    <img src="${movie.image_url}" alt="${movie.title}" class="movie-image" data-movie-id="${movie.id}">
+    <h4>${movie.title}</h4>
+    `;
 
-  // Ajoute l'élément au carrousel
-  carouselTrack.appendChild(movieElement);
+    // Ajoute l'élément au carrousel
+    carouselTrack.appendChild(movieElement);
   });
 }
 
@@ -135,4 +135,87 @@ async function fetchTopRatedActionMovies() {
 async function fetchTopRatedComedyMovies() {
   const url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=Comedy';
   fetchMovies(url, '.carousel-comedy-track');
+}
+
+async function fetchTopRatedDramaMovies() {
+  const url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&genre=Drama';
+  fetchMovies(url, '.carousel-drama-track');
+}
+
+
+
+
+
+// modals
+
+async function fetchModalMovieDetails(movieId) {
+  try {
+    const response = await fetch(`http://localhost:8000/api/v1/titles/${movieId}`);
+    const movie = await response.json();
+    console.log('Détails récupérés du film:', movie);
+
+    const modal = document.getElementById('movie-modal');
+    if (!modal) {
+      console.error('La modale est introuvable dans le DOM');
+      return;
+    }
+
+    modal.querySelector('.modal-movie-img').src = movie.image_url;
+    modal.querySelector('.modal-movie-title').textContent = movie.title;
+    modal.querySelector('.modal-movie-genre').textContent = movie.genres.join(', ');
+    modal.querySelector('.modal-movie-date').textContent = movie.date_published;
+    modal.querySelector('.modal-movie-rated').textContent = movie.rated;
+    modal.querySelector('.modal-movie-imdb').textContent = movie.imdb_score;
+    modal.querySelector('.modal-movie-director').textContent = movie.directors.join(', ');
+    modal.querySelector('.modal-movie-actors').textContent = movie.actors.join(', ');
+    modal.querySelector('.modal-movie-duration').textContent = movie.duration + ' minutes';
+    modal.querySelector('.modal-movie-country').textContent = movie.countries.join(', ');
+    modal.querySelector('.modal-movie-boxoffice').textContent = movie.worldwide_gross_income || 'Non disponible';
+    modal.querySelector('.modal-movie-description').textContent = movie.long_description || movie.description;
+
+    return movie;
+  } catch (error) {
+    console.error('Erreur lors de la récupération des détails du film:', error);
+  }
+}
+
+
+// la fonction fetchModalMovieDetails est responsable de la récupération des données du film depuis l'API et leur retour, tandis que openModal s'occupe de l'interface utilisateur, c'est-à-dire d'afficher ces données dans la modale.
+async function openModal(movieId) {
+  try {
+      const movie = await fetchModalMovieDetails(movieId);
+      console.log('Détails récupérés du film:', movie);
+
+      const modal = document.getElementById('movie-modal');
+      if (!modal) {
+          console.error('La modale est introuvable dans le DOM');
+          return;
+      }
+
+      // Mise à jour des éléments de la modale avec les données du film
+      updateModalElement(modal, '#modal-movie-img', 'src', movie.image_url);
+      updateModalElement(modal, '#modal-movie-title', 'textContent', movie.title);
+      updateModalElement(modal, '#modal-movie-genre', 'textContent', 'Genre: ' + movie.genres.join(', '));
+      updateModalElement(modal, '#modal-movie-date', 'textContent', 'Date de sortie: ' + movie.date_published);
+      updateModalElement(modal, '#modal-movie-rated', 'textContent', 'Classification: ' + movie.rated);
+      updateModalElement(modal, '#modal-movie-imdb', 'textContent', 'Score IMDb: ' + movie.imdb_score);
+      updateModalElement(modal, '#modal-movie-director', 'textContent', 'Réalisateur: ' + movie.directors.join(', '));
+      updateModalElement(modal, '#modal-movie-actors', 'textContent', 'Acteurs: ' + movie.actors.join(', '));
+      updateModalElement(modal, '#modal-movie-duration', 'textContent', 'Durée: ' + movie.duration + ' minutes');
+      updateModalElement(modal, '#modal-movie-country', 'textContent', 'Pays d\'origine: ' + movie.countries.join(', '));
+      updateModalElement(modal, '#modal-movie-boxoffice', 'textContent', 'Box Office: ' + (movie.worldwide_gross_income || 'Non disponible'));
+      updateModalElement(modal, '#modal-movie-description', 'textContent', movie.long_description || movie.description);
+
+      // Affichage de la modale
+      modal.style.display = 'block';
+  } catch (error) {
+      console.error('Erreur lors de l\'ouverture de la modale:', error);
+  }
+}
+
+function updateModalElement(modal, selector, property, value) {
+  const element = modal.querySelector(selector);
+  if (element) {
+      element[property] = value;
+  }
 }

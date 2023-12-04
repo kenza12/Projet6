@@ -1,6 +1,7 @@
 
 @import 'variables';
 
+// Style pour le bouton Play
 .play-button {
   padding: 10px 20px;
   border: none;
@@ -15,6 +16,7 @@
   }
 }
 
+// Style pour les flèches du carousel
 .carousel-button {
   position: absolute;
   top: 50%;
@@ -24,8 +26,19 @@
   border: none;
   cursor: pointer;
   z-index: 10;
-  // Vous pouvez également ajouter des styles spécifiques pour le hover ici
-  &:hover {
-    // Votre style pour hover
+}
+
+// Style pour le bouton de fermeture de la modale
+.close-modal {
+  color: $text-color;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    color: $red-color;
+    text-decoration: none;
+    cursor: pointer;
   }
 }
