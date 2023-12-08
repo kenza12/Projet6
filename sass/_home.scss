@@ -19,7 +19,7 @@
 #best-movie {
   margin-top: 10px; /* Marge en haut */
   max-width: calc($visible-movies * $movie-width + 12 * $movie-margin + 90px); /* Calcule la largeur maximale du container */
-  margin-left: 10px / 2; /* Définit une marge gauche spécifique */
+  margin-left: 5px; /* Définit une marge gauche spécifique */
   padding: 20px; /* Ajoute du padding autour du contenu */
   border: none; /* Aucune bordure */
 

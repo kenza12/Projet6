@@ -10,11 +10,6 @@ body {
   background-attachment: fixed;
 }
 
-@media (max-width: 768px) {
-  body {
-    background-size: contain;
-  }
-}
 header {
   background-color: transparent;
   display: flex;
@@ -36,6 +31,16 @@ nav {
   gap: 20px;
 }
 
+@media screen and (max-width: 600px) {
+  #brand-logo {
+    height: 80px;
+    margin-left: 5px;
+    margin-right: 0px;
+  }
+  nav {
+    gap: 5px;
+  }
+}
 nav a {
   color: #fff;
   text-decoration: none;
@@ -110,9 +115,8 @@ main {
 
 #best-movie {
   margin-top: 10px; /* Marge en haut */
-  margin-bottom: 40px;
   max-width: 1210px; /* Calcule la largeur maximale du container */
-  margin-left: 10px/2; /* Définit une marge gauche spécifique */
+  margin-left: 5px; /* Définit une marge gauche spécifique */
   padding: 20px; /* Ajoute du padding autour du contenu */
   border: none; /* Aucune bordure */
   display: flex; /* Utilise Flexbox pour la disposition */

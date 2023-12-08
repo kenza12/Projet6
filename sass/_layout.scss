@@ -13,13 +13,6 @@ body {
   background-attachment: fixed;
 }
 
-// Média queries pour ajuster le fond en fonction de la taille de l'écran
-@media (max-width: 768px) {
-  body {
-    background-size: contain; // Assure que l'image entière est visible sur les écrans plus petits
-  }
-}
-
 // Styles appliqués à l'élément <header>
 header {
   background-color: transparent;
@@ -43,6 +36,31 @@ header {
 nav {
   display: flex; // Utilise flexbox pour aligner les éléments de navigation
   gap: 20px; // Crée un espace entre les éléments de navigation
+}
+
+// // Média Queries pour ajuster la disposition en fonction de la taille de l'écran
+// @media (max-width: 768px) {
+//   #brand-logo {
+//     margin-left: 100px; // Ajuste la marge pour les écrans de taille moyenne
+//     margin-right: 100px; // Ajuste l'espace entre le logo et la navigation
+//   }
+
+//   nav {
+//     gap: 10px; // Réduit l'espace entre les éléments de navigation
+//   }
+// }
+
+// Test sur Galaxy S10 (360 * 760)
+@media screen and (max-width: 600px) {
+  #brand-logo {
+    height: 80px;
+    margin-left: 5px; // Réduit encore la marge pour les petits écrans
+    margin-right: 0px; // Réduit l'espace entre le logo et la navigation
+  }
+
+  nav {
+    gap: 5px; // Réduit davantage l'espace entre les éléments de navigation
+  }
 }
 
 // Styles appliqués à chaque lien <a> dans la navigation
