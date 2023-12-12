@@ -1,5 +1,6 @@
 let bestMovie;
 
+// Récupère les informations du meilleur film en se basant sur le score IMDb.
 async function fetchBestMovie() {
   /**
  * Récupère les informations du meilleur film en se basant sur le score IMDb.
@@ -22,6 +23,7 @@ try {
 }
 }
 
+// Récupère et affiche les détails d'un film spécifique en utilisant son ID.
 async function fetchMovieDetails(movieId) {
 /**
  * Récupère et affiche les détails d'un film spécifique en utilisant son ID.
@@ -41,6 +43,7 @@ try {
 }
 }
 
+// Affiche les détails du meilleur film dans l'interface utilisateur.
 function displayBestMovie(movie) {
 /**
 * Affiche les détails du meilleur film dans l'interface utilisateur.
@@ -71,10 +74,7 @@ buttonElement.style.display = 'block';
 }
 
 
-
-
-// top rated movies (toutees catégories confondues ou spécifiques)
-
+// Top rated movies (toutes catégories confondues ou spécifiques)
 async function fetchTopRatedMovies() {
 /**
 * Récupère une liste des films les mieux notés et les affiche.
@@ -87,24 +87,33 @@ const url = 'http://localhost:8000/api/v1/titles/?sort_by=-imdb_score';
 fetchMovies(url, '.carousel-track');
 }
 
+// Récupère une page de films et les ajoute à un carrousel.
 async function fetchMovies(url, carouselId) {
-let movies = [];
-try {
-  while (movies.length < 7 && url) {
-    const response = await fetch(url); // Récupère une page de films
-    const data = await response.json(); // Convertit en JSON
-    console.log('Récupération des données de films les mieux notés:', data);
-    movies = movies.concat(data.results); // Ajoute les films au tableau
-    url = data.next; // Met à jour l'URL pour la prochaine page
+  let movies = [];
+  try {
+      while (movies.length < 7 && url) {
+          const response = await fetch(url); // Récupère une page de films
+          const data = await response.json(); // Convertit en JSON
+          console.log('Récupération des données de films les mieux notés:', data);
+
+          // Filtrage des films en excluant "Ramayana: The Legend of Prince Rama" car image non disponible.
+          const filteredMovies = data.results.filter(movie => movie.title !== "Ramayana: The Legend of Prince Rama");
+          movies = movies.concat(filteredMovies); // Ajoute les films filtrés au tableau
+
+          // Vérifie si le nombre de films est suffisant après le filtrage
+          if (movies.length < 7) {
+              url = data.next; // Met à jour l'URL pour la prochaine page si nécessaire
+          }
+      }
+      movies = movies.slice(0, 7); // S'assure d'avoir exactement 7 films
+      displayMovies(movies, carouselId); // Appelle la fonction pour afficher les films
+      initializeCarousel(carouselId); // Initialise le carrousel
+  } catch (error) {
+      console.error('Erreur lors de la récupération des films les mieux notés:', error); // Gère les erreurs
   }
-  movies = movies.slice(1, 8); // Exclut le meilleur film déjà affiché
-  displayMovies(movies, carouselId) // Appelle la fonction pour afficher les films
-  initializeCarousel(carouselId); // Initialise le carrousel
-} catch (error) {
-  console.error('Erreur lors de la récupération des films les mieux notés:', error); // Gère les erreurs
-}
 }
 
+// Affiche des films dans un carrousel spécifique.
 function displayMovies(movies, carouselId) {
 
   const carouselTrack = document.querySelector(carouselId); // Sélection du Carousel pour l'injection du JS
@@ -142,12 +151,8 @@ async function fetchTopRatedDramaMovies() {
   fetchMovies(url, '.carousel-drama-track');
 }
 
-
-
-
-
 // modals
-
+// Récupère les détails d'un film spécifique pour l'affichage dans une modale.
 async function fetchModalMovieDetails(movieId) {
   try {
     const response = await fetch(`http://localhost:8000/api/v1/titles/${movieId}`);
@@ -180,7 +185,8 @@ async function fetchModalMovieDetails(movieId) {
 }
 
 
-// la fonction fetchModalMovieDetails est responsable de la récupération des données du film depuis l'API et leur retour, tandis que openModal s'occupe de l'interface utilisateur, c'est-à-dire d'afficher ces données dans la modale.
+// La fonction fetchModalMovieDetails est responsable de la récupération des données du film depuis l'API et leur retour, tandis que openModal s'occupe de l'interface utilisateur, c'est-à-dire d'afficher ces données dans la modale.
+// Ouvre une modale avec des détails sur un film spécifique.
 async function openModal(movieId) {
   try {
       const movie = await fetchModalMovieDetails(movieId);
@@ -213,6 +219,7 @@ async function openModal(movieId) {
   }
 }
 
+// Met à jour un élément spécifique de la modale avec de nouvelles données.
 function updateModalElement(modal, selector, property, value) {
   const element = modal.querySelector(selector);
   if (element) {

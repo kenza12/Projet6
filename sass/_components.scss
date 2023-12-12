@@ -3,42 +3,42 @@
 
 // Style pour le bouton Play
 .play-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: $red-color;
-  color: $background-color;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px 20px; // Définit l'espacement intérieur du bouton pour le rendre plus grand et confortable
+  border: none; // Supprime la bordure du bouton pour un look plus épuré
+  background-color: $red-color; // Utilise la couleur rouge pour la couleur de fond
+  color: $black-color; // Définit la couleur du texte en noir
+  border-radius: 5px; // Arrondit les coins du bouton avec un rayon de 5 pixels
+  cursor: pointer; // Change le curseur en main pointant quand il survole le bouton, indiquant une action cliquable
+  transition: background-color 0.3s ease; // Ajoute une transition progressive à la couleur de fond sur 0.3 secondes
 
   &:hover {
-    background-color: darken($red-color, 10%);
+    background-color: darken($red-color, 10%); // Assombrit la couleur de fond de 10% lors du survol pour un effet interactif
   }
 }
 
 // Style pour les flèches du carousel
 .carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
+  position: absolute; // Positionne absolument les boutons par rapport à leur conteneur parent
+  top: 50%; // Positionne les boutons au milieu verticalement
+  transform: translateY(-50%); // Décale les boutons vers le haut de 50% de leur propre hauteur pour un alignement vertical centré
+  background-color: rgba(0,0,0,0.5); // Définit une couleur de fond semi-transparente noire
+  color: $text-color; // Définit la couleur du texte en blanc pour un contraste élevé
+  border: none; // Supprime les bordures du bouton
+  cursor: pointer; // Change le curseur pour indiquer une action cliquable
+  z-index: 10; // Assure que les boutons sont au-dessus des autres éléments
 }
 
 // Style pour le bouton de fermeture de la modale
 .close-modal {
-  color: $text-color;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+  color: $text-color; // Utilise la couleur de texte (blanc)
+  float: right; // Positionne le bouton à droite du conteneur
+  font-size: 28px; // Augmente la taille de la police pour une meilleure visibilité
+  font-weight: bold; // Rend le texte en gras
+  cursor: pointer; // Indique une action cliquable
 
   &:hover, &:focus {
-    color: $red-color;
-    text-decoration: none;
-    cursor: pointer;
+    color: $red-color; // Change la couleur en rouge lors du survol ou de la mise au point pour une interaction visuelle
+    text-decoration: none; // Supprime toute décoration de texte comme le soulignement
+    cursor: pointer; // Maintient le curseur de type pointeur
   }
 }

@@ -31,16 +31,6 @@ nav {
   gap: 20px;
 }
 
-@media screen and (max-width: 600px) {
-  #brand-logo {
-    height: 80px;
-    margin-left: 5px;
-    margin-right: 0px;
-  }
-  nav {
-    gap: 5px;
-  }
-}
 nav a {
   color: #fff;
   text-decoration: none;
@@ -55,6 +45,16 @@ nav a.active {
   border-bottom: 2px solid #fff;
 }
 
+@media screen and (max-width: 600px) {
+  #brand-logo {
+    height: 80px;
+    margin-left: 5px;
+    margin-right: 0px;
+  }
+  nav {
+    gap: 5px;
+  }
+}
 main {
   display: flex;
   flex-direction: column;
@@ -79,7 +79,7 @@ main {
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #fff;
   border: none;
   cursor: pointer;
   z-index: 10;
@@ -99,14 +99,14 @@ main {
 }
 
 .titles-container {
-  display: block; /* Rend le container en bloc, le rendant approprié pour des mises en page de niveau supérieur */
-  width: 1040px; /* Calcule la largeur totale du container basé sur le nombre de films et les marges */
-  margin: 0 auto; /* Centre le container horizontalement */
+  display: block; /* Cela rend le '.titles-container' en élément de type bloc. Il occupe toute la largeur disponible dans son parent et se trouve sur sa propre ligne. */
+  width: 1040px; /* Calcule la largeur du container basé sur le nombre de films visibles, leur largeur et les marges entre eux. */
+  margin: 0 auto; /* Centre le container horizontalement dans son conteneur parent. '0' pour la marge verticale et 'auto' pour la marge horizontale, ce qui équilibre automatiquement les marges de chaque côté. */
 }
 
 .section-header {
   margin-top: 0;
-  color: #b22101; /* Utilise une variable pour définir la couleur du texte */
+  color: #b22101; /* Couleur des titres (Meilleur Film, Films les mieux notés, etc) en rouge */
   font-size: 1.5em; /* Définit la taille de la police */
   margin-left: 0; /* Réinitialise la marge gauche */
   padding-left: 10px; /* Ajoute un peu d'espace à gauche du texte */
@@ -119,22 +119,24 @@ main {
   margin-left: 5px; /* Définit une marge gauche spécifique */
   padding: 20px; /* Ajoute du padding autour du contenu */
   border: none; /* Aucune bordure */
-  display: flex; /* Utilise Flexbox pour la disposition */
+  display: flex; /* Utilise Flexbox pour la disposition. Flexbox est particulièrement utile pour créer des mises en page réactives qui s'adaptent à différentes tailles d'écran, tandis que les blocs sont plus statiques dans leur disposition. */
   flex-direction: row; /* Les éléments enfants sont disposés en ligne */
   align-items: center; /* Centre verticalement les éléments enfants */
-  justify-content: flex-start; /* Alignement horizontal des enfants au début */
+  justify-content: flex-start; /* Alignement horizontal des enfants au début (gauche) du conteneur */
   /* Styles pour le fond doré */
 }
 #best-movie.gold-background {
   position: relative; /* Position relative pour permettre un positionnement absolu des pseudos-éléments */
+  margin-bottom: 50px;
+  /*::before est utilisé pour créer un effet de fond décoratif pour le conteneur #best-movie. Il ajoute un dégradé et une image de fond, positionnés absolument derrière le contenu du conteneur. Cela permet de créer des effets visuels complexes sans ajouter d'éléments HTML supplémentaires.*/
 }
 #best-movie.gold-background::before {
   content: ""; /* Nécessaire pour générer le pseudo-élément */
   position: absolute; /* Position absolue par rapport à son parent */
-  top: 0;
-  left: 0;
-  width: 100%; /* Largeur complète */
-  height: 100%; /* Hauteur complète */
+  top: 0; /* Positionne le haut du pseudo-élément en haut du conteneur. */
+  left: 0; /* Positionne le côté gauche du pseudo-élément au bord gauche du conteneur. */
+  width: 100%; /* Étend la largeur du pseudo-élément à 100% de celle de son parent. */
+  height: 100%; /* Étend la hauteur du pseudo-élément à 100% de celle de son parent. */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), url("../img/—Pngtree—creative metal gold background_926653.jpg") center/cover;
   z-index: -1; /* Place derrière le contenu */
   opacity: 0.37; /* Transparence pour l'effet de superposition */
@@ -257,7 +259,7 @@ main {
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #fff;
   border: none;
   cursor: pointer;
   z-index: 10;

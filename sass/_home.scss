@@ -2,20 +2,22 @@
 @import 'components';
 
 .titles-container {
-  display: block; /* Rend le container en bloc, le rendant approprié pour des mises en page de niveau supérieur */
-  width: calc($visible-movies * $movie-width + 4 * $movie-margin); /* Calcule la largeur totale du container basé sur le nombre de films et les marges */
-  margin: 0 auto; /* Centre le container horizontalement */
+  display: block; /* Cela rend le '.titles-container' en élément de type bloc. Il occupe toute la largeur disponible dans son parent et se trouve sur sa propre ligne. */
+  width: calc($visible-movies * $movie-width + 4 * $movie-margin); /* Calcule la largeur du container basé sur le nombre de films visibles, leur largeur et les marges entre eux. */
+  margin: 0 auto; /* Centre le container horizontalement dans son conteneur parent. '0' pour la marge verticale et 'auto' pour la marge horizontale, ce qui équilibre automatiquement les marges de chaque côté. */
 }
 
 .section-header {
   margin-top: 0;
-  color: $red-color; /* Utilise une variable pour définir la couleur du texte */
+  color: $red-color; /* Couleur des titres (Meilleur Film, Films les mieux notés, etc) en rouge */
   font-size: 1.5em; /* Définit la taille de la police */
   margin-left: 0; /* Réinitialise la marge gauche */
   padding-left: 10px; /* Ajoute un peu d'espace à gauche du texte */
   text-align: left; /* Alignement du texte à gauche */
 }
 
+
+// Style pour le meilleur film
 #best-movie {
   margin-top: 10px; /* Marge en haut */
   max-width: calc($visible-movies * $movie-width + 12 * $movie-margin + 90px); /* Calcule la largeur maximale du container */
@@ -23,22 +25,24 @@
   padding: 20px; /* Ajoute du padding autour du contenu */
   border: none; /* Aucune bordure */
 
-  display: flex; /* Utilise Flexbox pour la disposition */
+  display: flex; /* Utilise Flexbox pour la disposition. Flexbox est particulièrement utile pour créer des mises en page réactives qui s'adaptent à différentes tailles d'écran, tandis que les blocs sont plus statiques dans leur disposition. */
   flex-direction: row; /* Les éléments enfants sont disposés en ligne */
   align-items: center; /* Centre verticalement les éléments enfants */
-  justify-content: flex-start; /* Alignement horizontal des enfants au début */
+  justify-content: flex-start; /* Alignement horizontal des enfants au début (gauche) du conteneur */
 
   /* Styles pour le fond doré */
   &.gold-background {
     position: relative; /* Position relative pour permettre un positionnement absolu des pseudos-éléments */
+    margin-bottom: 50px;
 
+    /*::before est utilisé pour créer un effet de fond décoratif pour le conteneur #best-movie. Il ajoute un dégradé et une image de fond, positionnés absolument derrière le contenu du conteneur. Cela permet de créer des effets visuels complexes sans ajouter d'éléments HTML supplémentaires.*/
     &::before {
       content: ""; /* Nécessaire pour générer le pseudo-élément */
       position: absolute; /* Position absolue par rapport à son parent */
-      top: 0;
-      left: 0;
-      width: 100%; /* Largeur complète */
-      height: 100%; /* Hauteur complète */
+      top: 0; /* Positionne le haut du pseudo-élément en haut du conteneur. */
+      left: 0; /* Positionne le côté gauche du pseudo-élément au bord gauche du conteneur. */
+      width: 100%; /* Étend la largeur du pseudo-élément à 100% de celle de son parent. */
+      height: 100%; /* Étend la hauteur du pseudo-élément à 100% de celle de son parent. */
       background: 
       linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6)), // Overlay d'ombre noire
       url('../img/—Pngtree—creative metal gold background_926653.jpg') center/cover; // Image de fond et style de remplissage
@@ -81,6 +85,8 @@
   }
 }
 
+
+// Styles pour les films avec carousel
 .movie-carousel {
   position: relative; /* Position relative pour permettre le positionnement absolu des boutons */
   max-width: 100%; /* Largeur maximale */
@@ -107,68 +113,53 @@
   margin-right: 15px; // Ajoute une marge à droite pour chaque élément du carrousel
 }
 
+
 // Styles pour la modale
 .modal {
-  display: none; // Cache la modale par défaut
-  position: fixed; // Positionnement fixe pour rester au-dessus des autres éléments
-  z-index: 1000; // Assure que la modale est au-dessus des autres contenus (détermine l'ordre de superposition).
-  left: 0;
-  top: 0;
-  width: 100%; // Largeur complète
-  height: 100%; // Hauteur complète
-  overflow: auto; // Permet le défilement si le contenu est trop long
-  background-color: rgba(0, 0, 0, 0.6); // Fond semi-transparent
+  display: none; // Cache la modale initialement, elle ne s'affiche pas par défaut.
+  position: fixed; // Fixe la position de la modale par rapport à la fenêtre du navigateur, elle reste en place lors du défilement.
+  z-index: 1000; // Définit un z-index élevé pour s'assurer que la modale s'affiche au-dessus des autres éléments de la page.
+  left: 0; // Positionne le côté gauche de la modale au bord gauche de la fenêtre du navigateur.
+  top: 0; // Positionne le haut de la modale en haut de la fenêtre du navigateur.
+  width: 100%; // La modale s'étend sur toute la largeur de la fenêtre.
+  height: 100%; // La modale s'étend sur toute la hauteur de la fenêtre.
+  overflow: auto; // Permet à la modale de défiler si son contenu dépasse sa hauteur.
+  background-color: rgba(0, 0, 0, 0.6); // Couleur de fond semi-transparente pour l'effet de superposition.
 
   .modal-content {
-    background-color: $background-color;
-    margin: 10% auto; // Centré horizontalement avec une marge en haut
-    padding: 20px;
-    border: 1px solid $red-color;
-    width: 80%; // Largeur adaptée à la taille de l'écran
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: $black-color; // Couleur de fond du contenu de la modale.
+    margin: 10% auto; // Marge supérieure de 10% et centrage horizontal.
+    padding: 20px; // Espacement intérieur autour du contenu de la modale.
+    border: 1px solid $red-color; // Bordure de 1 pixel de largeur, de couleur rouge.
+    width: 80%; // La largeur du contenu de la modale est de 80% de la largeur de la fenêtre.
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); // Ombre portée pour un effet 3D.
 
     img.modal-movie-img {
-      max-width: 100%; // Assure que l'image ne dépasse pas la largeur de la modale
-      height: auto;
+      max-width: 100%; // Largeur maximale de l'image égale à 100% de la largeur de son conteneur pour éviter le débordement.
+      height: auto; // Hauteur automatique pour maintenir le ratio d'aspect de l'image.
     }
 
     h3.modal-movie-title {
-      color: $red-color;
-      font-size: 1.5em;
-      margin-bottom: 15px;
+      color: $red-color; // Couleur du texte du titre.
+      font-size: 1.5em; // Taille de la police du titre.
+      margin-bottom: 15px; // Marge en dessous du titre.
     }
 
     .modal-movie-description {
-      margin-top: 25px;
+      margin-top: 25px; // Marge au-dessus de la description.
     }
     
     .modal-info {
-      margin: 5px 0;
+      margin: 5px 0; // Marge au-dessus et en dessous de chaque bloc d'information.
 
       .modal-section-title {
-        color: $red-color;
-        margin-right: 10px;
+        color: $red-color; // Couleur du texte des titres des sections.
+        margin-right: 10px; // Marge à droite des titres des sections.
       }
 
       .modal-value {
-        color: $text-color;
+        color: $text-color; // Couleur du texte pour les valeurs.
       }
     }
   }
 }
-
-
-
-// Responsivité pour les écrans plus petits
-// @media screen and (max-width: 600px) {
-//   .modal-content {
-//     width: 95%;
-//   }
-// }
-
-
-
-
-
-
-
